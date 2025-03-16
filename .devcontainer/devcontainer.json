@@ -1,0 +1,81 @@
+{
+	"name": "ROS Develop Environment",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+            "settings": {
+              // 禁用所有代理设置
+              "http.proxy": "",
+              "https.proxy": "",
+              "github.copilot.advanced.proxy": "",
+              // 配置 Copilot 使用直接连接
+              "github.copilot.advanced.debug.useElectronFetcher": false,
+              "github.copilot.advanced.debug.useNodeFetcher": false,
+              "github.copilot.advanced.debug.useNodeFetchFetcher": false,
+              "C_Cpp.intelliSenseEngine": "disabled",
+              "terminal.integrated.shell:linux": "/bin/zsh",
+              "terminal.integrated.defaultProfile.linux": "zsh",
+                "clangd.arguments": [
+                    "--compile-commands-dir=${workspaceFolder}/build",
+                    "--completion-style=detailed",
+                    "--clang-tidy",
+                    "--clang-tidy-checks=-*,modernize*",
+                    "--header-insertion=never"
+
+                ]
+              },
+              "extensions": [
+                // FOR code
+                "usernamehw.errorlens",
+                "streetsidesoftware.code-spell-checker",
+                "ms-azuretools.vscode-docker",
+                "eamodio.gitlens",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "saoudrizwan.claude-dev",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                // FOR python
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                // FOR C++
+                "ms-vscode.cpptools",
+
+                // FOR ROS2
+                "nonanonno.vscode-ros2",
+                "ms-iot.vscode-ros",
+                "twxs.cmake",
+
+                // enhance
+                "vscode-icons-team.vscode-icons"
+
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "gcc -v",
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "developer",
+    "containerEnv": {
+        "HTTP_PROXY": "",
+        "HTTPS_PROXY": "",
+        "NO_PROXY": "*",
+        "http_proxy": "",
+        "https_proxy": ""
+      }
+
+
+}
