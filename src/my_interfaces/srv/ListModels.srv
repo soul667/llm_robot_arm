@@ -1,0 +1,5 @@
+# 请求 - 空，不需要任何参数
+---
+# 响应
+string[] model_ids     # 可用模型的ID列表
+string[] model_names   # 可用模型的名称列表

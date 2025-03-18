@@ -1,0 +1,39 @@
+llm_proxy_node:
+  ros__parameters:
+    # 默认模型设置（当未指定时使用）
+    default_model: 'gpt-3.5-turbo'
+    request_timeout: 30.0
+    
+    # 预设模型配置
+    models:
+      gpt35:
+        name: 'gpt-3.5-turbo'
+        api_endpoint: 'https://api.openai.com/v1/chat/completions'
+        api_key: ''  # 实际使用时填入
+        default_temperature: 0.7
+        default_max_tokens: 1024
+        model_format: 'openai'
+      
+      gpt4:
+        name: 'gpt-4'
+        api_endpoint: 'https://api.openai.com/v1/chat/completions'
+        api_key: ''  # 实际使用时填入
+        default_temperature: 0.7
+        default_max_tokens: 2048
+        model_format: 'openai'
+        
+      claude:
+        name: 'claude-3-opus-20240229'
+        api_endpoint: 'https://api.anthropic.com/v1/messages'
+        api_key: ''  # 实际使用时填入
+        default_temperature: 0.7
+        default_max_tokens: 4096
+        model_format: 'anthropic'
+        
+      zhipu:
+        name: 'glm-4'
+        api_endpoint: 'https://open.bigmodel.cn/api/paas/v4/chat/completions'
+        api_key: ''  # 实际使用时填入
+        default_temperature: 0.7
+        default_max_tokens: 2048
+        model_format: 'openai'  # 智谱API兼容OpenAI格式

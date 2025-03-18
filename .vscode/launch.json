@@ -1,0 +1,14 @@
+// 调试启动配置
+
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+          "name": "ROS: Launch my file",
+          "request": "launch",
+          "target": "<full path to your launch.py or launch file>",
+          "launch": ["rviz", "gz", "gzserver", "gzclient"],
+          "type": "ros"
+      }
+    ]
+}  

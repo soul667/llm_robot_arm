@@ -13,17 +13,16 @@ RUN sudo apt-get update --fix-missing
 RUN sudo apt-get install -y --no-install-recommends \
     zsh \
     wget \
+    python3-venv \
+    python3-pip \
+    python3-full \
     git && \
     sudo apt-get clean && \
     sudo rm -rf /var/lib/apt/lists/*
-
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true && \ 
     git clone https://github.com/valentinocossar/vscode.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/vscode && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-# Install oh-my-zsh
-
-# Add zsh configuration
 ADD .zshrc $HOME

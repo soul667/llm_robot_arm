@@ -55,7 +55,8 @@
                 "twxs.cmake",
 
                 // enhance
-                "vscode-icons-team.vscode-icons"
+                "vscode-icons-team.vscode-icons",
+                "dotjoshjohnson.xml"
 
 			]
 		}
