@@ -1,0 +1,37 @@
+[llm_proxy_node.ros__parameters]
+# Default model settings
+default_model = "gpt-3.5-turbo"
+request_timeout = 30.0
+
+# Model configurations
+[llm_proxy_node.ros__parameters.models.gpt35]
+name = "gpt-3.5-turbo"
+api_endpoint = "https://api.openai.com/v1/chat/completions"
+api_key = ""  # Will be filled in during runtime
+default_temperature = 0.7
+default_max_tokens = 1024
+model_format = "openai"
+
+[llm_proxy_node.ros__parameters.models.gpt4]
+name = "gpt-4"
+api_endpoint = "https://api.openai.com/v1/chat/completions"
+api_key = ""
+default_temperature = 0.7
+default_max_tokens = 2048
+model_format = "openai"
+
+[llm_proxy_node.ros__parameters.models.claude]
+name = "claude-3-opus-20240229"
+api_endpoint = "https://api.anthropic.com/v1/messages"
+api_key = ""
+default_temperature = 0.7
+default_max_tokens = 4096
+model_format = "anthropic"
+
+[llm_proxy_node.ros__parameters.models.zhipu]
+name = "glm-4"
+api_endpoint = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
+api_key = ""
+default_temperature = 0.7
+default_max_tokens = 2048
+model_format = "openai"  # ZhiPu API is OpenAI compatible

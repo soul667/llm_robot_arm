@@ -1,9 +1,10 @@
 {
 	"name": "ROS Develop Environment",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
+	// "build": {
+	// 	"dockerfile": "Dockerfile"
+	// },
 
+  "image":"luobaigu/ros_development:1.0",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
@@ -56,7 +57,8 @@
 
                 // enhance
                 "vscode-icons-team.vscode-icons",
-                "dotjoshjohnson.xml"
+                "dotjoshjohnson.xml",
+                "tamasfe.even-better-toml"
 
 			]
 		}

@@ -18,19 +18,17 @@ plugins=(
     vscode
 )
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export LANG=en_US.UTF-8
 
 # ROS2 setup
-if [ -f /opt/ros/humble/setup.zsh ]; then
-    source /opt/ros/humble/setup.zsh
-fi
+source /opt/ros/jazzy/setup.zsh 
 
 # Aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-source /opt/ros/jazzy/setup.zsh 
+[ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
