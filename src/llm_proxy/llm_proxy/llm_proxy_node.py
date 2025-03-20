@@ -1,3 +1,4 @@
+# ros2 run llm_proxy llm_proxy_node --ros-args --params-file src/llm_proxy/config/params.toml
 #!/usr/bin/env python3
 import uuid
 import time
@@ -17,50 +18,12 @@ class LLMProxyNode(Node):
     def __init__(self):
         super().__init__('llm_proxy_node')
         
-        # 声明基础参数
-        self.declare_parameter('default_model', 'gpt35')
-        self.declare_parameter('request_timeout', 30.0)
-        
-        # 声明模型配置参数
-        model_params = [
-            ('models.gpt35.name', 'gpt-3.5-turbo'),
-            ('models.gpt35.api_endpoint', 'https://api.openai.com/v1/chat/completions'),
-            ('models.gpt35.api_key', ''),
-            ('models.gpt35.default_temperature', 0.7),
-            ('models.gpt35.default_max_tokens', 1024),
-            ('models.gpt35.model_format', 'openai'),
-            
-            ('models.gpt4.name', 'gpt-4'),
-            ('models.gpt4.api_endpoint', 'https://api.openai.com/v1/chat/completions'),
-            ('models.gpt4.api_key', ''),
-            ('models.gpt4.default_temperature', 0.7),
-            ('models.gpt4.default_max_tokens', 2048),
-            ('models.gpt4.model_format', 'openai'),
-            
-            ('models.claude.name', 'claude-3-opus-20240229'),
-            ('models.claude.api_endpoint', 'https://api.anthropic.com/v1/messages'),
-            ('models.claude.api_key', ''),
-            ('models.claude.default_temperature', 0.7),
-            ('models.claude.default_max_tokens', 4096),
-            ('models.claude.model_format', 'anthropic'),
-            
-            ('models.zhipu.name', 'glm-4'),
-            ('models.zhipu.api_endpoint', 'https://open.bigmodel.cn/api/paas/v4/chat/completions'),
-            ('models.zhipu.api_key', ''),
-            ('models.zhipu.default_temperature', 0.7),
-            ('models.zhipu.default_max_tokens', 2048),
-            ('models.zhipu.model_format', 'openai'),
-        ]
-        
-        for param_name, default_value in model_params:
-            self.declare_parameter(param_name, default_value)
-        
         # 获取基础参数
         default_model_id = self.get_parameter('default_model').value
         
         # 构建模型配置字典
         self.models_config = {}
-        model_ids = ['gpt35', 'gpt4', 'claude', 'zhipu']
+        model_ids = ['gpt35', 'gpt4', 'claude', 'zhipu', 'qwen']
         
         for model_id in model_ids:
             base_path = f'models.{model_id}'

@@ -32,14 +32,7 @@ class LLMClient:
         model_id = model_id if model_id and model_id in self.models_config else self.default_model_id
         config = self.models_config[model_id].copy()
         
-        # 根据模型格式获取对应的环境变量API密钥
-        if config["model_format"] == "openai":
-            env_key = os.getenv("OPENAI_API_KEY")
-        elif config["model_format"] == "anthropic":
-            env_key = os.getenv("ANTHROPIC_API_KEY")
-        elif config["model_format"] == "openai" and "zhipu" in model_id:
-            env_key = os.getenv("ZHIPU_API_KEY")
-            
+        env_key =os.getenv(config["api_key"])
         # 如果环境变量中有API密钥，则使用环境变量中的值
         if env_key:
             config["api_key"] = env_key
