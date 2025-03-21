@@ -11,10 +11,11 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
-        ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', package_name, 'config'), glob('config/*.toml')),
+        ('share/' + package_name, ['package.xml', '.env']),
+        (os.path.join('share', package_name, 'config'), glob('config/*.yml')),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
     ],
-    install_requires=['setuptools', 'python-dotenv'],
+    install_requires=['setuptools', 'python-dotenv', 'openai'],
     zip_safe=True,
     maintainer='developer',
     maintainer_email='2194521087@qq.com',
@@ -24,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'llm_proxy_node = llm_proxy.llm_proxy_node:main',
+            'test_client_node = llm_proxy.test_client_node:main',
         ],
     },
 )

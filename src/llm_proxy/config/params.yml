@@ -1,0 +1,12 @@
+llm_proxy_node:
+  ros__parameters:
+    default_model: "qwen"
+    request_timeout: 30.0
+    models:
+      qwen:
+        name: "qwen-plus"
+        api_endpoint: "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions"
+        api_key: "$QWEN_API_KEY"
+        default_temperature: 0.7
+        default_max_tokens: 2048
+        model_format: "openai"  # ZhiPu API is OpenAI compatible
